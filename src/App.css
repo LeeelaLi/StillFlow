@@ -410,7 +410,7 @@ button:focus-visible {
 }
 
 .frame-item.active {
-  background: var(--color-dark);
+  background: var(--color-dark-light);
   color: var(--color-light);
   border-left-color: var(--color-gray-dark);
 }
@@ -951,7 +951,7 @@ button:focus-visible {
 }
 
 .theme-light .header {
-  background: var(--color-gray-light);
+  background: var(--color-light);
   border-bottom-color: var(--color-dark);
 }
 
@@ -978,6 +978,9 @@ button:focus-visible {
   color: var(--color-dark-light);
 }
 
+.theme-light .frame-item.active {
+  background: var(--color-gray-light);
+}
 .theme-light .logo, 
 .theme-light .video-info, 
 .theme-light .export-dialog-body, 
