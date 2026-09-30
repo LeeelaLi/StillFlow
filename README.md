@@ -4,6 +4,10 @@
 
 It allows you to import a video, select specific frames, and create a motion study by overlaying those frames on top of each other. The goal is to make movement easier to observe, compare, and analyze without requiring professional animation software.
 
+## Preview
+<img width="2710" height="1468" alt="preview-light" src="https://github.com/user-attachments/assets/6114d642-cb16-491e-9991-db2ca59c7860" />
+<img width="2706" height="1450" alt="preview-dark" src="https://github.com/user-attachments/assets/520665e9-9017-4a97-b6e3-d3152ab1328f" />
+
 ## Features
 
 ### Video Playback
@@ -68,8 +72,6 @@ StillFlow also includes:
 * Help tooltips
 * Automatic frame-list scrolling during playback
 
----
-
 ## How to Use
 
 ### 1. Import a Video
@@ -112,8 +114,6 @@ Click **Export PNG** to open the export dialog.
 
 Choose the filename, export scale, and background mode, then export the motion study as a PNG image.
 
----
-
 ## Keyboard Controls
 
 | Key                        | Action                |
@@ -124,8 +124,6 @@ Choose the filename, export scale, and background mode, then export the motion s
 | `Ctrl/Cmd + Click`         | Toggle a frame        |
 | `Ctrl/Cmd + Shift + Click` | Add a frame range     |
 | Double-click               | Select a single frame |
-
----
 
 ## Why create StillFlow?
 
@@ -143,15 +141,11 @@ This can make it easier to observe:
 
 StillFlow is designed to keep this process simple and accessible directly in the browser.
 
----
-
 ## Privacy
 
 Videos are processed directly in the browser.
 
 StillFlow does not require users to upload their videos to a server in order to create a motion study.
-
----
 
 ## Technology
 
@@ -165,8 +159,6 @@ StillFlow is built with:
 * CSS
 
 The motion study is generated using the browser's Canvas API.
-
----
 
 ## Run Locally
 
@@ -196,7 +188,6 @@ npm run dev
 
 Then open the local URL shown in the terminal.
 
----
 
 ## Project Structure
 
@@ -218,8 +209,6 @@ motion-trace
 ├── package.json
 └── vite.config.ts
 ```
-
----
 
 ## Current Status
 
@@ -243,8 +232,6 @@ Compare With Original
 Export PNG
 ```
 
----
-
 ## Future Improvements
 
 Possible future improvements include:
@@ -253,8 +240,6 @@ Possible future improvements include:
 * Improved mobile interaction
 * Additional interface languages
 * More customization options for exported images (format, size, etc.)
-
----
 
 ## License
 
