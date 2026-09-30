@@ -1,75 +1,263 @@
-# React + TypeScript + Vite
+# StillFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StillFlow** is a browser-based motion study tool for analyzing movement frame by frame.
 
-Currently, two official plugins are available:
+It allows you to import a video, select specific frames, and create a motion study by overlaying those frames on top of each other. The goal is to make movement easier to observe, compare, and analyze without requiring professional animation software.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+### Video Playback
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Import videos directly in the browser
+* Native video playback controls
+* Adjustable playback speed
+* Frame-by-frame navigation using the left and right arrow keys
+* Adjustable FPS from 1 to 120
 
-## Expanding the ESLint configuration
+### Frame Selection
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+StillFlow provides several ways to select frames:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Click a frame to jump to it
+* Double-click to select a single frame
+* `Shift + Click` to select a range
+* `Ctrl/Cmd + Click` to toggle individual frames
+* `Ctrl/Cmd + Shift + Click` to add a range
+* Select all frames
+* Clear the current selection
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Selected frames are displayed in the frame list and summarized as compact ranges.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Motion Study
 
+Selected frames can be combined into a motion study overlay.
+
+You can adjust:
+
+* Opacity
+* Uniform overlay mode
+* Fade overlay mode
+* Fade direction:
+
+  * Forward
+  * Backward
+  * Center
+
+The motion study is displayed alongside the original video, with a draggable divider between the two views.
+
+### Export
+
+Motion studies can be exported as PNG images.
+
+Export options include:
+
+* Custom file name
+* 50%, 100%, 150%, and 200% export scale
+* Composite background
+* Transparent background
+* Estimated PNG file size before export
+
+### Interface
+
+StillFlow also includes:
+
+* Dark theme
+* Light theme
+* English / Chinese interface
+* Responsive layout
+* Help tooltips
+* Automatic frame-list scrolling during playback
+
+---
+
+## How to Use
+
+### 1. Import a Video
+
+Click **Import Video** or drag a video into the import area.
+
+### 2. Set the FPS
+
+Choose the FPS used for frame calculation.
+
+The total number of frames is calculated from:
+
+```text
+Video Duration × FPS
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Select Frames
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Use the frame list on the right side to select the frames you want to study.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Multiple selection methods are supported, including range selection with `Shift` and additional selection with `Ctrl/Cmd`.
 
+### 4. Adjust the Motion Study
+
+Once frames are selected, the Motion Study preview will appear.
+
+Adjust:
+
+* Opacity
+* Overlay mode
+* Fade direction
+
+### 5. Compare the Motion
+
+Use the divider between **Original** and **Motion Study** to control how much space each preview occupies.
+
+### 6. Export
+
+Click **Export PNG** to open the export dialog.
+
+Choose the filename, export scale, and background mode, then export the motion study as a PNG image.
+
+---
+
+## Keyboard Controls
+
+| Key                        | Action                |
+| -------------------------- | --------------------- |
+| `←`                        | Previous frame        |
+| `→`                        | Next frame            |
+| `Shift + Click`            | Select a frame range  |
+| `Ctrl/Cmd + Click`         | Toggle a frame        |
+| `Ctrl/Cmd + Shift + Click` | Add a frame range     |
+| Double-click               | Select a single frame |
+
+---
+
+## Why create StillFlow?
+
+Studying movement often requires looking at several moments at the same time, especially for 2D animation workers.
+
+Traditional video playback shows movement sequentially, while StillFlow allows selected frames to be displayed together as an overlay.
+
+This can make it easier to observe:
+
+* Changes in body position
+* Movement trajectories
+* Timing between poses
+* Differences between consecutive frames
+* Overall motion patterns
+
+StillFlow is designed to keep this process simple and accessible directly in the browser.
+
+---
+
+## Privacy
+
+Videos are processed directly in the browser.
+
+StillFlow does not require users to upload their videos to a server in order to create a motion study.
+
+---
+
+## Technology
+
+StillFlow is built with:
+
+* React
+* TypeScript
+* Vite
+* HTML5 Video
+* HTML5 Canvas
+* CSS
+
+The motion study is generated using the browser's Canvas API.
+
+---
+
+## Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/LeeelaLi/StillFlow.git
 ```
+
+Enter the project directory:
+
+```bash
+cd motion-trace
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in the terminal.
+
+---
+
+## Project Structure
+
+```text
+motion-trace
+├── public
+├── src
+│   ├── components
+│   │   ├── FrameList.tsx
+│   │   ├── MotionCanvas.tsx
+│   │   └── HelpTooltip.tsx
+│   ├── locales
+│   │   ├── en.ts
+│   │   └── zh.ts
+│   ├── App.tsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.tsx
+├── package.json
+└── vite.config.ts
+```
+
+---
+
+## Current Status
+
+StillFlow is currently a functional browser-based motion study tool.
+
+The core workflow is implemented:
+
+```text
+Import Video
+     ↓
+Choose FPS
+     ↓
+Select Frames
+     ↓
+Create Motion Study
+     ↓
+Adjust Overlay
+     ↓
+Compare With Original
+     ↓
+Export PNG
+```
+
+---
+
+## Future Improvements
+
+Possible future improvements include:
+
+* Customize mask colors for different selected frame numbers
+* Improved mobile interaction
+* Additional interface languages
+* More customization options for exported images (format, size, etc.)
+
+---
+
+## License
+
+This project is currently available for personal and educational use.
+
+See the repository for the current license information.
